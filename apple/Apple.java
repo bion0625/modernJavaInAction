@@ -12,7 +12,7 @@ public class Apple{
 
     public AppleColor getColor() {return this.appleColor;}
     public void setColor(AppleColor appleColor) {this.appleColor = appleColor;}
-    public int getWeight() {return this.weight;}
+    public Integer getWeight() {return this.weight;}
     public void setWeight(int weight) {this.weight = weight;}
 
     @Override
