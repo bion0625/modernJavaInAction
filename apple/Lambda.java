@@ -1,5 +1,8 @@
 package apple;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.PrivilegedAction;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,7 +12,7 @@ import static apple.AppleColor.GREEN;
 import static apple.AppleColor.RED;
 
 public class Lambda {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Comparator<Apple> byWeight = new Comparator<>() {
             @Override
             public int compare(Apple a1, Apple a2) {
@@ -56,9 +59,27 @@ public class Lambda {
 
         process(() -> System.out.println("This is awesome!!"));
 
+        System.out.println(processFile1());
+
+        System.out.println(processFile2(b -> b.readLine()));
+
+        System.out.println(processFile2(b -> b.readLine() + b.readLine()));
+        System.out.println(processFile2((BufferedReader br) -> br.readLine() + br.readLine()));
     }
 
     public static void process(Runnable r) {
         r.run();
+    }
+
+    public static String processFile1() throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            return br.readLine();
+        }
+    }
+
+    public static String processFile2(BufferdReaderProcessor p) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+            return p.process(br);
+        }
     }
 }
