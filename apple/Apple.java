@@ -9,6 +9,9 @@ public class Apple{
         this.appleColor = appleColor;
         this.weight = weight;
     }
+    public Apple(Integer weight) {
+        this.weight = weight;
+    }
 
     public AppleColor getColor() {return this.appleColor;}
     public void setColor(AppleColor appleColor) {this.appleColor = appleColor;}

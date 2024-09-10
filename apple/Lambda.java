@@ -3,16 +3,9 @@ package apple;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
 import java.security.PrivilegedAction;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.*;
+import java.util.function.*;
 
 import static apple.AppleColor.GREEN;
 import static apple.AppleColor.RED;
@@ -86,6 +79,38 @@ public class Lambda {
 
         Supplier<Apple> apple = () -> new Apple();
 
+        Supplier<Apple> c1 = Apple::new;
+        Apple a1 = c1.get();
+
+        Supplier<Apple> c2 = () -> new Apple();
+        Apple a2 = c2.get();
+
+        Function<Integer, Apple> c3 = Apple::new;
+        Apple a3 = c3.apply(110);
+
+        Function<Integer, Apple> c4 = weight -> new Apple(weight);
+        Apple a4 = c4.apply(110);
+
+        List<Integer> weights = Arrays.asList(7, 3, 4, 10);
+        List<Apple> apples = map(weights, Apple::new);
+
+        BiFunction<AppleColor, Integer, Apple> c5 = Apple::new;
+        Apple A5 = c5.apply(GREEN, 110);
+
+        BiFunction<AppleColor, Integer, Apple> c6 = (AppleColor color, Integer weight) -> new Apple(color, weight);
+        Apple a6 = c6.apply(GREEN, 110);
+
+
+    }
+
+    static Map<String, Function<Integer, Apple>> map = new HashMap<>();
+    static {
+        map.put("apple1", Apple::new);
+        map.put("apple2", Apple::new);
+    }
+
+    public static Apple giveMeApple(String name, Integer weight) {
+        return map.get(name.toLowerCase()).apply(weight);
     }
 
     public static void process(Runnable r) {
@@ -125,4 +150,12 @@ public class Lambda {
         }
         return result;
     }
+
+//    public static List<Apple> map(List<Integer> list, Function<Integer, Apple> f) {
+//        List<Apple> result = new ArrayList<>();
+//        for (Integer t : list) {
+//            result.add(f.apply(t));
+//        }
+//        return result;
+//    }
 }
