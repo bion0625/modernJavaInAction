@@ -3,6 +3,7 @@ package apple;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.security.PrivilegedAction;
 import java.util.*;
 import java.util.function.*;
@@ -105,6 +106,42 @@ public class Lambda {
         System.out.println("inventory: " + inventory);
         inventory.sort(comparing(Apple::getWeight));
         System.out.println("inventory: " + inventory);
+
+        inventory
+                .sort(
+                        Comparator
+                                .comparing(Apple::getWeight)
+                                .reversed()
+                                .thenComparing(Apple::getColor)
+                );
+
+        Predicate<Apple> redApple = (Apple a) -> RED.equals(a.getColor());
+        Predicate<Apple> noRedApple = redApple.negate();
+        Predicate<Apple> redAndHeavyApple = redApple.and(a -> a.getWeight() > 150);
+        Predicate<Apple> redAndHeavyAppleOrGreen = redApple
+                .and(a -> a.getWeight() > 150)
+                .or(a -> GREEN.equals(a.getColor()));
+
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.andThen(g);
+        Integer result = h.apply(1);
+        System.out.println("result: " + result);
+        h = f.compose(g);
+        result = h.apply(1);
+        System.out.println("result: " + result);
+
+        Function<String, String> addHeader = Letter::addHeader;
+        Function<String, String> transformationPipeline =
+                addHeader.andThen(Letter::checkSpelling)
+                .andThen(Letter::addFooter);
+
+        String apply = transformationPipeline.apply("labda UJ!");
+        System.out.println("apply: " + apply);
+
+        transformationPipeline = addHeader.andThen(Letter::addFooter);
+        apply = transformationPipeline.apply("labda UJ!");
+        System.out.println("apply: " + apply);
 
     }
 
