@@ -9,6 +9,7 @@ import java.util.function.*;
 
 import static apple.AppleColor.GREEN;
 import static apple.AppleColor.RED;
+import static java.util.Comparator.comparing;
 
 public class Lambda {
     public static void main(String[] args) throws IOException {
@@ -100,6 +101,10 @@ public class Lambda {
         BiFunction<AppleColor, Integer, Apple> c6 = (AppleColor color, Integer weight) -> new Apple(color, weight);
         Apple a6 = c6.apply(GREEN, 110);
 
+        System.out.println();
+        System.out.println("inventory: " + inventory);
+        inventory.sort(comparing(Apple::getWeight));
+        System.out.println("inventory: " + inventory);
 
     }
 
