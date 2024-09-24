@@ -33,5 +33,11 @@ public class NumberType {
                 .max();
         int max = maxCalories.orElse(1);
         System.out.println("max: " + max);
+
+        IntStream evenNumbers = IntStream.rangeClosed(1, 100).filter(i -> i % 2 == 0);
+        System.out.println(evenNumbers.count());
+
+        evenNumbers = IntStream.range(1, 100).filter(i -> i % 2 == 0);
+        System.out.println(evenNumbers.count());
     }
 }
