@@ -1,4 +1,4 @@
-package streamUsing;
+package com.modernJava.streamUsing;
 
 import java.util.Arrays;
 import java.util.List;

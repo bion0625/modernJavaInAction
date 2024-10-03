@@ -1,7 +1,8 @@
-package streamCollectingData;
+package com.modernJava.streamCollectingData;
 
-import streamUsing.Trader;
-import streamUsing.Transaction;
+
+import com.modernJava.streamUsing.Trader;
+import com.modernJava.streamUsing.Transaction;
 
 import java.util.*;
 import java.util.stream.Collectors;

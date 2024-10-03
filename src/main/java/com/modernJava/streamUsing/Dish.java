@@ -1,4 +1,4 @@
-package streamUsing;
+package com.modernJava.streamUsing;
 
 public class Dish {
     public Dish() {}

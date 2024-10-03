@@ -1,6 +1,6 @@
-package streamCollectingData;
+package com.modernJava.streamCollectingData;
 
-import streamUsing.Dish;
+import com.modernJava.streamUsing.Dish;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package streamCollectingData;
+package com.modernJava.streamCollectingData;
 
 import java.util.ArrayList;
 import java.util.Collections;
