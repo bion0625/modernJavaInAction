@@ -1,7 +1,10 @@
 package com.modernJava.parallelDataProcessingAndPerformance;
 
+import com.modernJava.forkJoinFramework.ForkJoinSumCalculator;
 import org.openjdk.jmh.annotations.*;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.LongStream;
@@ -49,9 +52,20 @@ public class ParallelStreamBenchmark {
 //                .reduce(0L, Long::sum);
 //    } // modernJava.ParallelStreamBenchmark.parallelRangedSum  avgt   40  646.279 ± 27.541  us/op
 
+//    @Benchmark
+//    public long sideEffectParallelSum() {
+//        return ParallelStream.sideEffectParallelSum(N);
+//    } // modernJava.parallelDataProcessingAndPerformance.ParallelStreamBenchmark.sideEffectParallelSum  avgt   40  1825.640 ± 69.649  us/op
+
     @Benchmark
-    public long sideEffectParallelSum() {
-        return ParallelStream.sideEffectParallelSum(N);
+    public long forkJoinSumCalculator() {
+        return forkJoinSum(N);
+    } // modernJava.parallelDataProcessingAndPerformance.ParallelStreamBenchmark.forkJoinSumCalculator  avgt   40  36988.672 ± 3583.553  us/op
+
+    public static long forkJoinSum(long n) {
+        long[] numbers = LongStream.rangeClosed(1, n).toArray();
+        ForkJoinTask<Long> task = new ForkJoinSumCalculator(numbers);
+        return new ForkJoinPool().invoke(task);
     }
 
     @TearDown(Level.Invocation)
