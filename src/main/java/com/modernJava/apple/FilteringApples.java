@@ -1,4 +1,4 @@
-package apple;
+package com.modernJava.apple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,8 +9,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import static apple.AppleColor.GREEN;
-import static apple.AppleColor.RED;
+import static com.modernJava.apple.AppleColor.GREEN;
+import static com.modernJava.apple.AppleColor.RED;
 
 public class FilteringApples {
     public static void main(String[] args) {

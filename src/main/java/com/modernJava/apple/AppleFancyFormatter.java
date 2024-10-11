@@ -1,4 +1,4 @@
-package apple;
+package com.modernJava.apple;
 
 public class AppleFancyFormatter implements AppleFormatter{
     @Override

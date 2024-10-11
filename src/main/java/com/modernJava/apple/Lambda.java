@@ -1,4 +1,4 @@
-package apple;
+package com.modernJava.apple;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,8 +8,8 @@ import java.security.PrivilegedAction;
 import java.util.*;
 import java.util.function.*;
 
-import static apple.AppleColor.GREEN;
-import static apple.AppleColor.RED;
+import static com.modernJava.apple.AppleColor.GREEN;
+import static com.modernJava.apple.AppleColor.RED;
 import static java.util.Comparator.comparing;
 
 public class Lambda {

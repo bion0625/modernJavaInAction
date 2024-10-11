@@ -1,7 +1,6 @@
-package apple;
+package com.modernJava.apple;
 
-
-import static apple.AppleColor.GREEN;
+import static com.modernJava.apple.AppleColor.GREEN;
 
 public class AppleGreenColorPredicate implements ApplePredicate{
     @Override

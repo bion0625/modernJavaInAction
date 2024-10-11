@@ -1,4 +1,4 @@
-package apple;
+package com.modernJava.apple;
 
 import java.util.ArrayList;
 import java.util.List;
