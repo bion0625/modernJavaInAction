@@ -74,5 +74,16 @@ public class PatternsAndTechniquesForCreatingDslInJava {
             });
         });
         System.out.println("order4: " + order4);
+
+        Order order5 = MixBuilder.forCustomer("BigBank",
+                MixBuilder.buy(t -> t.quantity(80)
+                        .stock("IBM")
+                        .on("NYSE")
+                        .at(125.00)),
+                MixBuilder.sell(t -> t.quantity(50)
+                        .stock("GOOGLE")
+                        .on("NASDAQ")
+                        .at(125.00)));
+        System.out.println("order5: " + order5);
     }
 }
