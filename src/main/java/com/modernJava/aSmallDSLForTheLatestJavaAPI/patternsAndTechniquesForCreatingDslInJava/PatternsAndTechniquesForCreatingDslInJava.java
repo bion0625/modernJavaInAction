@@ -85,5 +85,23 @@ public class PatternsAndTechniquesForCreatingDslInJava {
                         .on("NASDAQ")
                         .at(125.00)));
         System.out.println("order5: " + order5);
+
+        double value1 = new TaxCalculator().withTaxRegional()
+                                        .withTaxSurCharge()
+                                        .calculate(order5);
+        System.out.println("value1: " + value1);
+
+        double value2 = new TaxCalculatorWithLambda().with(Tax::regional)
+                                                    .with(Tax::surcharge)
+                                                    .calculate(order5);
+        System.out.println("value2: " + value2);
+    }
+
+    public static double calculate(Order order, boolean useRegional, boolean useGeneral, boolean useSurCharge) {
+        double value = order.getValue();
+        if (useRegional) value = Tax.regional(value);
+        if (useGeneral) value = Tax.general(value);
+        if (useSurCharge) value = Tax.surcharge(value);
+        return value;
     }
 }
