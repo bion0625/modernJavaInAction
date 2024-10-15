@@ -37,11 +37,25 @@
             <version>1.17.4</version>
         </dependency>
 
+        <!-- Cucumber Java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.0</version> <!-- 최신 버전으로 대체 가능 -->
+<!--            <scope>test</scope>-->
+        </dependency>
+
+        <!-- Cucumber JUnit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.11.0</version> <!-- 최신 버전으로 대체 가능 -->
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.10.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
