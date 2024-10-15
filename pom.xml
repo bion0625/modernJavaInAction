@@ -77,6 +77,19 @@
             <version>2.2.220</version>
         </dependency>
 
+        <!-- Spring Context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.22</version> <!-- Spring 버전은 프로젝트에 맞게 조정하세요 -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+            <version>5.5.9</version> <!-- 버전은 필요에 따라 최신으로 조정 -->
+        </dependency>
+
     </dependencies>
 
     <build>
