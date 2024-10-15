@@ -39,6 +39,7 @@ public class MyConfiguration {
                 .filter((Integer p) -> p % 2 == 0)
                 .transform(Object::toString)
                 .channel(MessageChannels.queue("queueChannel"))
+//                .handle(System.out::println)
                 .get();
     }
 
