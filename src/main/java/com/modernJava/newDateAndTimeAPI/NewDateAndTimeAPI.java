@@ -1,6 +1,7 @@
 package com.modernJava.newDateAndTimeAPI;
 
 import java.time.*;
+import java.time.chrono.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -9,6 +10,7 @@ import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class NewDateAndTimeAPI {
     public static void main(String[] args) {
@@ -210,5 +212,49 @@ public class NewDateAndTimeAPI {
         System.out.println("date31: " + date31);
         System.out.println("formattedDate4: " + formattedDate4);
         System.out.println("date32: " + date32);
+
+        ZoneId romeZone = ZoneId.of("Europe/Rome");
+        ZoneId zoneId = TimeZone.getDefault().toZoneId();
+        System.out.println("romeZone: " + romeZone);
+        System.out.println("zoneId: " + zoneId);
+
+        LocalDate date33 = LocalDate.of(2014, Month.MARCH, 18);
+        ZonedDateTime zd1 = date33.atStartOfDay(romeZone);
+        LocalDateTime dateTime1 = LocalDateTime.of(2014, Month.MARCH, 18, 13, 45);
+        ZonedDateTime zd2 = dateTime1.atZone(romeZone);
+        Instant instant5 = Instant.now();
+        ZonedDateTime zd3 = instant5.atZone(romeZone);
+        System.out.println("zd1: " + zd1);
+        System.out.println("zd2: " + zd2);
+        System.out.println("zd3: " + zd3);
+
+        Instant instant6 = Instant.now();
+        LocalDateTime timeFromInstant = LocalDateTime.ofInstant(instant6, romeZone);
+        System.out.println("timeFromInstant: " + timeFromInstant);
+
+        ZoneOffset newYorkOffset = ZoneOffset.of("-05:00");
+        System.out.println("newYorkOffset: " + newYorkOffset);
+
+        LocalDateTime dateTime2 = LocalDateTime.of(2014, Month.MARCH, 18, 13, 45);
+        OffsetDateTime dateTimeInNewYork = OffsetDateTime.of(dateTime2, newYorkOffset);
+        System.out.println("dateTimeInNewYork: " + dateTimeInNewYork);
+
+        LocalDate date34 = LocalDate.of(2014, Month.MARCH, 18);
+        JapaneseDate japaneseDate = JapaneseDate.from(date34);
+        System.out.println("japaneseDate: " + japaneseDate);
+
+        Chronology japaneseChronology = Chronology.ofLocale(Locale.JAPAN);
+        ChronoLocalDate now = japaneseChronology.dateNow();
+        System.out.println("now: " + now);
+
+        HijrahDate ramadanDate =
+                HijrahDate.now().with(ChronoField.DAY_OF_MONTH, 1)
+                        .with(ChronoField.MONTH_OF_YEAR, 9);
+        System.out.println("Ramadan start on " +
+                IsoChronology.INSTANCE.date(ramadanDate) +
+                " and ends on " +
+                IsoChronology.INSTANCE.date(
+                        ramadanDate.with(
+                                TemporalAdjusters.lastDayOfMonth())));
     }
 }
