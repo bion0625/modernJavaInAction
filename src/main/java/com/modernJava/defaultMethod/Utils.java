@@ -1,4 +1,4 @@
-package com.modernJava.defaultMethod.evolvingAPI;
+package com.modernJava.defaultMethod;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.modernJava.defaultMethod.evolvingAPI;
+package com.modernJava.defaultMethod;
 
 public interface Resizable extends Drawable{
     int getWidth();
@@ -6,5 +6,7 @@ public interface Resizable extends Drawable{
     void setWidth(int width);
     void setHeight(int height);
     void setAbsoluteSize(int width, int height);
-//    void setRelativeSize(int wFactor, int hFactor);
+    default void setRelativeSize(int wFactor, int hFactor) {
+        setAbsoluteSize(getWidth() / wFactor, getHeight() / hFactor);
+    }
 }

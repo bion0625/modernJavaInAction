@@ -1,6 +1,6 @@
-package com.modernJava.defaultMethod.evolvingAPI;
+package com.modernJava.defaultMethod;
 
-public class Rectangle implements Resizable{
+public class Ellipse implements Resizable{
     private int width;
     private int height;
 
@@ -32,12 +32,12 @@ public class Rectangle implements Resizable{
 
     @Override
     public void draw() {
-        toString();
+        System.out.println(toString());
     }
 
     @Override
     public String toString() {
-        return "Rectangle{" +
+        return "Ellipse{" +
                 "width=" + width +
                 ", height=" + height +
                 '}';
