@@ -1,4 +1,4 @@
-package com.modernJava.syncAPIAndAsyncAPI;
+package com.modernJava.completableFutureWithCombinatorsForConcurrency;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
