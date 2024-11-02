@@ -1,4 +1,4 @@
-package com.modernJava.completableFutureStableAsyncProgramming;
+package com.modernJava.completableFutureStableAsyncProgramming.simpleUseOfFuture;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
