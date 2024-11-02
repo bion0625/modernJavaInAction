@@ -11,6 +11,10 @@ public class Shop {
         this.name = name;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     Random random = new Random();
     public double getPrice(String product) {
         return calculatePrice(product);
